@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+}
+body {
+    background-color: #f7f7f7;
+}
+
+/* whole */
+.whole-container {
+    margin-left: 260px;
+    min-height: 100vh;
+    display: block;
+    padding: 18px 24px;
+}

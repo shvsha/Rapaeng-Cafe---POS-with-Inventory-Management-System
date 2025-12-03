@@ -1,0 +1,47 @@
+.whole-side-bar {
+    /* fixed, left sidebar column */
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 260px; /* fixed width for predictable layout */
+    overflow: auto;
+    background-color: #EEDDC8;
+    z-index: 100;
+}
+.side-bar-logo img {
+    width: 170px;
+    margin-left: 30px;
+    margin-top: 18px;
+}
+.side-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.side-bar li {
+    padding: 20px 50px;
+    transition: 0.3s;
+}
+.side-bar li:hover {
+    background-color: #D4B899;
+    cursor: pointer;
+}
+.side-bar li:active {
+    background-color: #C3A885;
+}
+.side-bar a{
+    text-decoration: none;
+    color: black;
+}
+
+/* logout button for admin */
+.logout-button {
+    background-color: transparent;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    margin-top: 100px;
+    margin-left: 100px;
+}

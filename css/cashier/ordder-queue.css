@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+}
+body {
+    background-color: #f7f7f7;
+}
+
+/* whole container */
+.whole-container {
+  margin-left: 285px; 
+}
+
+/* right part */
+.right-panel {
+  align-items: flex-start;
+  width: 100%;
+}
+.title {
+    margin-top: 15px;
+}
+.actOrders-avgWait-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.flame-outline, .time-outline {
+    font-size: 20px;
+    margin-right: -20px;
+}
+.flame-outline {
+    color: orange;
+}
+.time-outline {
+    color: #4c56af;
+}
+
+/* orders */
+.orders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #EEDDC8;
+    max-width: 1230px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+}
+.top-container {
+    background-color: #7a4e2d;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.order-status {
+    padding: 10px 20px;
+    background-color: rgb(190, 43, 43);
+    border-radius: 20px;
+    font-weight: bold;
+}
+.receipt-time-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.order-time-outline {
+    color: yellow;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.cook-ready-hold-btns {
+    width: 100%;
+    display: flex;
+}
+.cook-ready-hold-btns button {
+    flex: 1;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.cook-hold-btn {
+    background-color: orange;
+}
+.hold-btn {
+    background-color: darkgray;
+}
+
+/* individual order card */
+.orders-card {
+    padding: 16px;
+    border-radius: 8px;
+    border: 3px solid transparent;
+}
+.orders-card + .orders-card {
+  margin-top: 14px;
+}
+.orders-card .top-container {
+  padding: 12px;
+  border-radius: 6px;
+  color: #fff;
+}
+.orders-card .receipt-time-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+.order-status {
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+.order-status.status-1 {
+  background: #c23b3b;
+  color: #fff;
+}
+.order-status.status-2 {
+  background: #d9b04c;
+  color: #2b2b2b;
+}
+.order-status.status-3 {
+  background: #7fb77e;
+  color: #123;
+}
+/* Hold state styling */
+.order-status.status-4 {
+  background: #8e7b62; /* muted tan/brown to indicate hold */
+  color: #fff;
+}
+.menu-container {
+  padding: 8px 0;
+}
+.menu-container .menu-name {
+  color: black
+}
+.menu-qty {
+  background: #2b6b8f;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #fff;
+}
+.cook-hold-btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.cook-hold-btn {
+  background: #c49a2a;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  border: none;
+  flex: 1;
+}
+.remove-btn {
+  background-color: #c23b3b;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.hold-btn {
+  background: #6b6b6b;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  border: none;
+  flex: 1;
+}
+.no-orders {
+  color: #666;
+  padding: 24px;
+  text-align: center;
+}

@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+}
+body {
+    background-color: #f7f7f7;
+}
+
+/* whole */
+.whole-container {
+    margin-left: 260px;
+    min-height: 100vh;
+    display: block;
+    padding: 25px 50px;
+}
+
+/* top actions */
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+.search-menu {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 87%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.add-new-menu-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #7A4E2D;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: #e8c396;
+    border-radius: 15px;
+}
+tr, th, td {
+    padding: 20px;
+}
+
+/* buttoness */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+.edit-btn, .delete-btn  {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.edit-btn {
+    background-color: #4CAF50;
+}
+.delete-btn {
+    background-color: #da4d4d;
+}
+.edit-btn:hover, .delete-btn:hover, .add-new-menu-btn:hover {
+    opacity: 0.6;
+}
+
+/* modal overlay & dialog */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    z-index: 200;
+}
+.modal-overlay.hidden {
+    display: none;
+}
+.modal {
+    width: 680px;
+    max-width: calc(100% - 48px);
+    background: #fff7f2;
+    border-radius: 12px;
+    box-shadow: 0 18px 60px rgba(0,0,0,0.28);
+    overflow: hidden;
+    border: 1px solid rgba(122,78,45,0.12);
+    transform: translateY(-8px);
+    animation: dialogIn 180ms ease forwards;
+}
+@keyframes dialogIn {
+    from {
+        opacity: 0;
+        transform: translateY(-12px) scale(.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, #7A4E2D, #5B321F);
+    color: #fff;
+}
+.modal-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+.modal-close {
+    background: transparent;
+    color: #fff;
+    border: 0;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+.modal-body {
+    padding: 18px;
+    color: #3b3228;
+}
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 12px 18px;
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.04);
+}
+.edit-menu-form .field-row {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.edit-menu-form input[type="text"],
+.edit-menu-form input[type="number"],
+.edit-menu-form textarea,
+.edit-menu-form select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    font-size: 14px;
+    background: #fff;
+}
+.modal .btn-save,
+.modal .btn-danger,
+.modal .btn-outline {
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+.modal .btn-save {
+    background: #7A4E2D;
+    color: #fff;
+    border: 0;
+}
+.modal .btn-outline {
+    background: transparent;
+    border: 1px solid #ddd;
+}
+.modal .btn-danger {
+    background: #da4d4d;
+    color: #fff;
+    border: 0;
+}
+.notification {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 24px;
+    min-width: 320px;
+    max-width: 380px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.22);
+    color: #fff;
+    font-weight: 700;
+    animation: slideDown 220ms ease;
+}
+.notification.success {
+    background: linear-gradient(90deg, #7A4E2D, #5B321F);
+}
+.notification.error {
+    background: linear-gradient(90deg, #b32d2d, #8a2828);
+}
+.notification .notif-icon {
+    font-size: 18px;
+    opacity: 0.95;
+}
+.notification.hidden {
+    display: none;
+}
+@keyframes slideDown {
+    from {
+        transform: translate(-50%, -6px) scale(.98);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+    }
+}
+

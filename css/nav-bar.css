@@ -1,0 +1,253 @@
+/* whole nav bar */
+.whole-nav-bar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background-color: #EEDDC8;
+}
+
+/* nav top right */
+.nav-top-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
+  margin-right: 50px;
+}
+
+.nav-top-right button, select {
+  border: none;
+  background-color: transparent;
+  margin-top: 15px;
+  display: flex;
+}
+
+.nav-top-right ion-icon {
+  font-size: 20px;
+  color: black;
+}
+
+.nav-top-right p {
+  margin-top: 1px;
+}
+
+.notif-icon {
+  margin-top: -3px;
+}
+
+.notif-icon, .globe-icon {
+  margin-right: 7px;
+}
+
+.globe-icon {
+  margin-top: 12px;
+}
+
+.nav-top-right select {
+  margin-top: 12px;
+}
+
+.nav-top-right button:hover,
+.nav-top-right select:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.nav-top-right button:active,
+.nav-top-right select:active {
+  opacity: 0.5;
+}
+
+/* Auth buttons (Sign Up / Log In) */
+.auth-btn {
+  padding: 8px 20px;
+  margin-top: 15px;
+  background-color: #8B4513;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.auth-btn:hover {
+  background-color: #654321;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.auth-btn:active {
+  opacity: 0.7;
+}
+
+.signup-btn {
+  background-color: transparent;
+  border: 2px solid #8B4513;
+  color: #8B4513;
+}
+
+.signup-btn:hover {
+  background-color: #8B4513;
+  color: white;
+}
+
+/* User Profile Dropdown */
+.user-profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.user-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: none;
+  color: black;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-profile-btn:hover {
+  background-color: rgba(139, 69, 19, 0.1);
+  opacity: 1;
+}
+
+.user-profile-btn ion-icon {
+  font-size: 24px;
+}
+
+.user-profile-btn p {
+  font-weight: 500;
+  margin: 0;
+}
+
+.dropdown-arrow {
+  font-size: 16px !important;
+  transition: transform 0.3s ease;
+}
+
+.user-profile-dropdown:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.profile-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  /* remove extra gap to avoid losing hover when moving from button to menu */
+  margin-top: 0;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.user-profile-dropdown:hover .profile-dropdown-content,
+.user-profile-dropdown .profile-dropdown-content:hover,
+.user-profile-dropdown:focus-within .profile-dropdown-content {
+  /* keep visible when hovering the button OR the dropdown itself, or when focused */
+  display: block;
+}
+
+.profile-dropdown-content a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.profile-dropdown-content a:hover {
+  background-color: #f5f5f5;
+}
+
+.profile-dropdown-content a ion-icon {
+  font-size: 20px;
+  color: #8B4513;
+}
+
+.profile-dropdown-content a:last-child {
+  border-top: 1px solid #eee;
+}
+
+.profile-dropdown-content a:last-child:hover {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+.profile-dropdown-content a:last-child ion-icon {
+  color: #d32f2f;
+}
+
+/* navigation bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #EEDDC8;
+  height: 80px;
+  position: fixed;
+  z-index: 999; 
+  width: 100%;
+}
+
+.nav-logo {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-logo p {
+  font-weight: bold;
+  font-size: 35px;
+  color: black;
+  margin-top: 18px;
+}
+
+.rapaeng-logo {
+  height: 80px;
+  width: 130px;
+  margin-left: 15px;
+  margin-bottom: 8px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 70px;
+  list-style: none;
+  margin-right: 50px;
+  font-size: 25px;
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar button {
+  background-color: transparent;
+  border: none;
+  margin-right: 70px;
+  font-size: 30px;
+  height: 100px;
+  transition: 0.3s;
+}
+
+.navbar button:hover,
+.nav-links li :hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.navbar button:active,
+.nav-links li :active {
+  opacity: 0.5;
+}

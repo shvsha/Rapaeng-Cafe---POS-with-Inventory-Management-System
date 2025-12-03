@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+}
+
+/* bg image */
+.bg-img {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bg-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* whole container */
+.whole-container {
+  background-color: #EEDDC8;
+}
+
+/* menu intro */
+.menu-intro {
+  text-align: center;
+  margin-top: 50px;
+}
+.menu-intro h1 {
+  font-size: 75px;
+  margin-bottom: 20px;
+}
+.menu-intro p {
+  font-size: 40px;
+}
+.menu-intro button {
+  background-color: #7A4E2D;
+  color: white;
+  border-radius: 7px;
+  border: none;
+  padding: 15px 50px;
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: -25px;
+  transition: 0.3s;
+}
+.menu-intro button:hover {
+  background-color: #966947;
+  cursor: pointer;
+}
+.menu-intro button:active {
+  transform: scale(0.95);
+}
+
+/* horizontal line */
+.line {
+  border: 0;
+  height: 2px;
+  background-color: #7A4E2D;
+  margin: 60px 400px;
+}
+
+/* menu sched */
+.menu-schedule {
+  text-align: center;
+}
+.menu-schedule h1 {
+  font-size: 35spx;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* after sched line */
+.after-sched-line .line {
+  margin: 60px 50px
+}
+
+/* images section */
+.image-section {
+  margin: 80px 0px;
+}
+.row-images-1, .row-images-2 {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.row-images-1 {
+  margin-bottom: 50px;
+}
+.row-images-1 img {
+  width: 650px;
+}
+.row-images-2 img{
+  width: 425px;
+}
+
+/* culture-coffee-food-container */
+.culture-coffee-food-container {
+  gap: 50px;
+  margin-bottom: 50px;
+}
+.culture-coffee-food-container h1 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 50px 0px;
+}
+.culture-coffee-food-container img {
+  display: block;
+  margin: 0 auto;
+  width: 1300px;
+  margin-bottom: -10px;
+}
+.culture-coffee-food-container p {
+  text-align: center;
+  font-size: 14px;
+  margin: 20px 200px;
+  color: rgb(101, 101, 101);
+  margin-bottom: 60px;
+}
+/* .learn-more-btn {
+  display: block;
+  margin: 0 auto;
+  background-color: #7A4E2D;
+  color: white;
+  border-radius: 7px;
+  border: none;
+  padding: 25px 60px;
+  font-size: 20px;
+  transition: 0.3s;
+}
+.learn-more-btn:hover {
+  background-color: #966947;
+  cursor: pointer;
+}
+.learn-more-btn:active {
+  transform: scale(0.95);
+} */
+
+
