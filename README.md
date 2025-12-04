@@ -10,7 +10,6 @@ A comprehensive Point of Sale (POS) and Inventory Management System built for Ra
 - **Sales Reports** - Generate detailed sales reports and analytics
 - **User Management** - Role-based access control for staff and administrators
 - **Product Catalog** - Manage menu items, categories, and pricing
-- **Transaction History** - Complete record of all sales transactions
 
 ## 🛠️ Tech Stack
 
