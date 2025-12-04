@@ -120,7 +120,7 @@ The system uses a relational database with the following main tables:
 - `menu`- Product catalog and inventory
 - `category` - Product categories
 - `orders` - Sales transactions
-- `stocks` - Inventory movement history
+- `stock-orders` - Inventory movement history
 
 ## 🤝 Contributing
 
