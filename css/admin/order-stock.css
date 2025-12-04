@@ -135,7 +135,7 @@ h1 {
 }
 
 .btn-add-order {
-    background: linear-gradient(90deg,#3B82F6,#7C3AED);
+    background: #7A4E2D;
     color: #fff;
     border: none;
     padding: 8px 12px;
@@ -251,7 +251,7 @@ h1 {
 }
 
 .btn-place {
-    background: #16a34a;
+    background: #7A4E2D;
     color: #fff;
     padding: 10px 14px;
     border-radius: 8px;

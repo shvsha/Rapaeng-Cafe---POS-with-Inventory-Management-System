@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2025 at 12:29 PM
+-- Generation Time: Dec 04, 2025 at 02:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,8 +60,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `customer_id`, `menu_id`, `quantity`, `added_at`) VALUES
-(4, 1, 4, 1, '2025-11-27 09:04:04'),
-(6, 1, 19, 1, '2025-11-27 09:09:03');
+(10, 1, 3, 1, '2025-12-04 11:39:23');
 
 -- --------------------------------------------------------
 
@@ -118,16 +117,17 @@ CREATE TABLE `customers` (
   `password` text NOT NULL,
   `phone_number` varchar(30) NOT NULL DEFAULT '',
   `gender` enum('male','female','other') NOT NULL DEFAULT 'other',
-  `date_of_birth` date NOT NULL DEFAULT '1970-01-01'
+  `date_of_birth` date NOT NULL DEFAULT '1970-01-01',
+  `last_username_change` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`customer_id`, `full_name`, `email`, `username`, `password`, `phone_number`, `gender`, `date_of_birth`) VALUES
-(1, 'Ivan Raphaelle Nigos', 'nigosivan619@gmail.com', 'ivannigos', 'ivannigos', '', 'other', '1970-01-01'),
-(2, 'Enoch Karsten Aguinaldo', 'enoch@example.com', 'kars10', 'enoch123', '09154436020', 'male', '2015-03-07');
+INSERT INTO `customers` (`customer_id`, `full_name`, `email`, `username`, `password`, `phone_number`, `gender`, `date_of_birth`, `last_username_change`) VALUES
+(1, 'Ivan Raphaelle Nigos', 'nigosivan@yahoo.com', 'shasha', 'ivannigos', '09456079385', 'male', '2005-06-01', '2025-12-03 20:55:26'),
+(2, 'Enoch Karsten Aguinaldo', 'enoch@example.com', 'kars10', 'enoch123', '09154436020', 'male', '2015-03-07', NULL);
 
 -- --------------------------------------------------------
 
@@ -147,6 +147,13 @@ CREATE TABLE `customer_addresses` (
   `is_default` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `customer_addresses`
+--
+
+INSERT INTO `customer_addresses` (`address_id`, `customer_id`, `label`, `address_line`, `city`, `province`, `postal_code`, `phone_number`, `is_default`, `created_at`) VALUES
+(1, 1, 'Address', 'Saint Louis Ville, Talogtog', 'San Juan', 'La Union', '2514', '', 0, '2025-12-03 13:04:49');
 
 -- --------------------------------------------------------
 
@@ -170,7 +177,8 @@ CREATE TABLE `kitchen_orders` (
 --
 
 INSERT INTO `kitchen_orders` (`id`, `order_ref`, `table_name`, `customer_name`, `items`, `status`, `created_at`, `updated_at`) VALUES
-(13, 'K-176448212185', 'B3', 'enoch', '[{\"menu_id\":\"1\",\"name\":\"Americano\",\"price\":27,\"quantity\":4},{\"menu_id\":\"2\",\"name\":\"Espresso\",\"price\":27,\"quantity\":4}]', '1', '2025-11-30 13:55:21', '2025-11-30 13:55:21');
+(17, 'K-176476915518', 'B12', 'Muadz', '[{\"menu_id\":\"3\",\"name\":\"Cappucino\",\"price\":28,\"quantity\":1}]', '1', '2025-12-03 21:39:15', '2025-12-03 21:39:15'),
+(18, 'K-176476918016', 'B12', 'Muadz', '[{\"menu_id\":\"3\",\"name\":\"Cappucino\",\"price\":28,\"quantity\":1},{\"menu_id\":\"2\",\"name\":\"Espresso\",\"price\":27,\"quantity\":2}]', '2', '2025-12-03 21:39:40', '2025-12-03 21:40:44');
 
 -- --------------------------------------------------------
 
@@ -228,16 +236,36 @@ CREATE TABLE `orders` (
   `customer_id` int(11) NOT NULL,
   `total_amount` int(11) NOT NULL,
   `create_at` date NOT NULL,
-  `status` char(1) NOT NULL DEFAULT '1'
+  `status` char(1) NOT NULL DEFAULT '1',
+  `delivery_eta` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `customer_id`, `total_amount`, `create_at`, `status`) VALUES
-(1, 1, 176, '2025-11-27', '1'),
-(2, 1, 24, '2025-11-27', '1');
+INSERT INTO `orders` (`order_id`, `customer_id`, `total_amount`, `create_at`, `status`, `delivery_eta`) VALUES
+(1, 1, 176, '2025-11-27', '1', NULL),
+(2, 1, 24, '2025-11-27', '1', NULL),
+(3, 1, 119, '2025-12-03', '3', '2025-12-03 21:20:13'),
+(4, 1, 59, '2025-12-03', '3', '2025-12-03 21:58:13'),
+(5, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:12'),
+(6, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:07'),
+(7, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:08'),
+(8, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:09'),
+(9, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:10'),
+(10, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:11'),
+(11, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:03'),
+(12, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:04'),
+(13, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:05'),
+(14, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:05'),
+(15, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:06'),
+(16, 1, 31, '2025-12-03', '3', '2025-12-03 21:57:56'),
+(17, 1, 31, '2025-12-03', '3', '2025-12-03 21:57:59'),
+(18, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:00'),
+(19, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:01'),
+(20, 1, 31, '2025-12-03', '3', '2025-12-03 21:58:02'),
+(21, 1, 31, '2025-12-03', '3', '2025-12-03 21:57:54');
 
 -- --------------------------------------------------------
 
@@ -261,7 +289,28 @@ INSERT INTO `order_items` (`id`, `order_id`, `menu_id`, `quantity`, `price`) VAL
 (1, 1, 16, 4, 20),
 (2, 1, 8, 1, 20),
 (3, 1, 9, 3, 20),
-(4, 2, 11, 1, 22);
+(4, 2, 11, 1, 22),
+(5, 3, 16, 3, 20),
+(6, 3, 19, 1, 20),
+(7, 3, 4, 1, 28),
+(8, 4, 2, 2, 27),
+(9, 5, 3, 1, 28),
+(10, 6, 3, 1, 28),
+(11, 7, 3, 1, 28),
+(12, 8, 3, 1, 28),
+(13, 9, 3, 1, 28),
+(14, 10, 3, 1, 28),
+(15, 11, 3, 1, 28),
+(16, 12, 3, 1, 28),
+(17, 13, 3, 1, 28),
+(18, 14, 3, 1, 28),
+(19, 15, 3, 1, 28),
+(20, 16, 3, 1, 28),
+(21, 17, 3, 1, 28),
+(22, 18, 3, 1, 28),
+(23, 19, 3, 1, 28),
+(24, 20, 3, 1, 28),
+(25, 21, 3, 1, 28);
 
 -- --------------------------------------------------------
 
@@ -358,7 +407,13 @@ INSERT INTO `stock_orders` (`order_id`, `processed_by`, `subtotal`, `tax`, `tota
 (6, 1, 1500, 150, 1650, '2025-11-30 21:27:34'),
 (7, 1, 600, 60, 660, '2025-11-30 21:27:58'),
 (8, 1, 1510, 151, 1661, '2025-11-30 21:28:08'),
-(9, 1, 1150, 115, 1265, '2025-11-30 21:31:06');
+(9, 1, 1150, 115, 1265, '2025-11-30 21:31:06'),
+(10, 1, 90, 9, 99, '2025-12-04 19:50:33'),
+(11, 1, 550, 55, 605, '2025-12-04 20:48:04'),
+(12, 1, 300, 30, 330, '2025-12-04 20:51:43'),
+(13, 1, 550, 55, 605, '2025-12-04 20:54:50'),
+(14, 1, 2220, 222, 2442, '2025-12-04 20:55:01'),
+(15, 1, 120, 12, 132, '2025-12-04 21:16:22');
 
 -- --------------------------------------------------------
 
@@ -398,7 +453,16 @@ INSERT INTO `stock_order_items` (`id`, `order_id`, `stock_id`, `quantity`, `unit
 (17, 8, 3, 1, 20),
 (18, 8, 4, 1, 90),
 (19, 9, 2, 2, 300),
-(20, 9, 1, 1, 550);
+(20, 9, 1, 1, 550),
+(21, 10, 10, 1, 90),
+(22, 11, 1, 1, 550),
+(23, 12, 2, 1, 300),
+(24, 13, 1, 1, 550),
+(25, 14, 2, 2, 300),
+(26, 14, 1, 2, 550),
+(27, 14, 3, 2, 20),
+(28, 14, 6, 4, 120),
+(29, 15, 6, 1, 120);
 
 --
 -- Indexes for dumped tables
@@ -504,13 +568,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `cashier`
 --
 ALTER TABLE `cashier`
-  MODIFY `cashier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cashier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -528,31 +592,31 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `customer_addresses`
 --
 ALTER TABLE `customer_addresses`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kitchen_orders`
 --
 ALTER TABLE `kitchen_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `stocks`
@@ -564,13 +628,13 @@ ALTER TABLE `stocks`
 -- AUTO_INCREMENT for table `stock_orders`
 --
 ALTER TABLE `stock_orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `stock_order_items`
 --
 ALTER TABLE `stock_order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables

@@ -193,24 +193,100 @@ function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, function(ch){ r
 // cancel/clear cart
 document.addEventListener('click', function(e){ if (e.target && e.target.id === 'cancelCartBtn'){ orderCart.clear(); updateCartUI(); } });
 
+// Aesthetic confirmation modal helper (similar to menu.js)
+function showPlaceOrderConfirmation(subtotal, tax, total, onConfirm) {
+    let modal = document.getElementById('placeOrderConfirmModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'placeOrderConfirmModal';
+        modal.className = 'modal-overlay hidden';
+        modal.innerHTML = `
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+                <div class="modal-header">
+                    <h3 id="confirmTitle">Confirm Order</h3>
+                    <button class="modal-close" data-close>&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to place this order?</p>
+                    <div style="margin-top:16px;background:#f9f9f9;padding:12px;border-radius:6px;text-align:left;">
+                        <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>Subtotal:</span><span id="placeSubtotal" style="font-weight:bold;">₱0.00</span></div>
+                        <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span>Tax (10%):</span><span id="placeTax" style="font-weight:bold;">₱0.00</span></div>
+                        <div style="display:flex;justify-content:space-between;border-top:1px solid #ddd;padding-top:8px;margin-top:8px;"><span style="font-weight:bold;">Total:</span><span id="placeTotal" style="font-weight:bold;color:#7A4E2D;">₱0.00</span></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="placeOrderCancel" class="btn-outline" data-close>Cancel</button>
+                    <button id="placeOrderConfirm" class="btn-add">Place Order</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+
+    document.getElementById('placeSubtotal').textContent = '₱' + subtotal.toFixed(2);
+    document.getElementById('placeTax').textContent = '₱' + tax.toFixed(2);
+    document.getElementById('placeTotal').textContent = '₱' + total.toFixed(2);
+
+    // clear previous handlers
+    document.getElementById('placeOrderConfirm').onclick = null;
+    document.getElementById('placeOrderCancel').onclick = null;
+
+    // set up handlers
+    document.getElementById('placeOrderConfirm').onclick = () => {
+        document.getElementById('placeOrderConfirm').disabled = true;
+        document.getElementById('placeOrderConfirm').textContent = 'Placing...';
+        onConfirm(() => {
+            modal.classList.add('hidden');
+            document.getElementById('placeOrderConfirm').disabled = false;
+            document.getElementById('placeOrderConfirm').textContent = 'Place Order';
+        });
+    };
+
+    document.getElementById('placeOrderCancel').onclick = () => {
+        modal.classList.add('hidden');
+    };
+
+    // close on overlay click
+    modal.onclick = (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    };
+
+    // show modal
+    modal.classList.remove('hidden');
+}
+
+// close modal when clicking close buttons
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.dataset.close) {
+        const overlay = e.target.closest('.modal-overlay');
+        if (overlay) overlay.classList.add('hidden');
+    }
+});
+
+
 // place order handler
 document.addEventListener('click', async function(e){ if (!e.target) return; if (e.target.id === 'placeOrderBtn'){
     if (orderCart.size === 0) return showNotification && showNotification('error','Cart is empty');
     const items = Array.from(orderCart.values()).map(it=>({ stock_id: it.stock_id, quantity: Number(it.qty), unit_price: Number(it.price || 0) }));
     const subtotal = Number(Array.from(orderCart.values()).reduce((s,it)=> s + (it.qty * (it.price||0)), 0).toFixed(2));
     const tax = +(subtotal * 0.10).toFixed(2); const total = +(subtotal + tax).toFixed(2);
-    // send to server
-    e.target.disabled = true; e.target.innerText = 'Placing...';
-    try{
-        const res = await fetch('/POS-Inventory/api/stocks/create-order.php',{ method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ items, subtotal, tax, total }) });
-        const j = await res.json();
+    
+    // show confirmation modal
+    showPlaceOrderConfirmation(subtotal, tax, total, async (onDone) => {
+        // send to server
+        try{
+            const res = await fetch('/POS-Inventory/api/stocks/create-order.php',{ method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ items, subtotal, tax, total }) });
+            const j = await res.json();
             if (j && j.success) {
                 // show modal with success message
                 try { openOrderPlacedModal(j.order_id, j.message || ''); } catch(e) {}
                 orderCart.clear(); updateCartUI();
             } else showNotification && showNotification('error','Failed: '+(j.message||'Unknown'));
-    } catch(err){ console.error(err); showNotification && showNotification('error','Network error'); }
-    e.target.disabled = false; e.target.innerText = 'Place Order';
+        } catch(err){ console.error(err); showNotification && showNotification('error','Network error'); }
+        onDone();
+    });
  }});
 
 // when on order-stock page, we should render cards instead of table rows

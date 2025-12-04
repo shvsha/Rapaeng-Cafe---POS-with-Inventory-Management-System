@@ -47,7 +47,7 @@
             <div id="editModal" class="modal-overlay hidden" aria-hidden="true">
                 <div class="modal" role="dialog" aria-modal="true" aria-labelledby="editTitle">
                     <div class="modal-header">
-                        <h3 id="editTitle">Edit Menu Item</h3>
+                        <h3 style="color:white;" id="editTitle">Edit Menu Item</h3>
                         <button class="modal-close" data-close>&times;</button>
                     </div>
                     <div class="modal-body">
@@ -78,7 +78,7 @@
             <div id="deleteModal" class="modal-overlay hidden" aria-hidden="true">
                 <div class="modal" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
                     <div class="modal-header">
-                        <h3 id="deleteTitle">Confirm delete</h3>
+                        <h3 style="color:white;" id="deleteTitle">Confirm delete</h3>
                         <button class="modal-close" data-close>&times;</button>
                     </div>
                     <div class="modal-body">

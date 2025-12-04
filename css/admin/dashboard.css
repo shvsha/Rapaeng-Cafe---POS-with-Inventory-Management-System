@@ -15,3 +15,57 @@ body {
     display: block;
     padding: 18px 24px;
 }
+
+  .dashboard-grid { display:grid; gap:16px; margin-top:20px; grid-auto-rows: auto; }
+  /* On wide screens show exact 3 columns per row so first row cards fill across page */
+  @media (min-width: 920px) {
+    .dashboard-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* On smaller screens fall back to stacking / responsive columns */
+  @media (max-width: 920px) {
+    .dashboard-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  }
+.stat-card {
+  background: #fff7f2;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  border: 1px solid rgba(122,78,45,0.06);
+}
+
+.stat-title {
+  font-weight: 700;
+  color: #7a4e2d;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: #2f2f2f;
+}
+
+.stat-value.small {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.analytics-section {
+  margin-top: 18px;
+}
+
+.analytics-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  border: 1px solid rgba(122,78,45,0.06);
+  min-height: 320px;
+}
+
+.analytics-card canvas {
+  width: 100% !important;
+  height: 320px !important;
+  display: block;
+}
