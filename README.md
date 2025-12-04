@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-GROUP 6 - WEB SYSTEM
-Leader: Ivan Raphaelle Nigos
-
-Members:
-Enoch Karsten Aguinaldo
-Gabriel Dy
-Claude Benedict Navarro
-Czyrus Raposas
-
-=======
->>>>>>> acdca74c652b441c5c432d6eb92be3c34a21b55c
 # Rapaeng Cafe - POS with Inventory Management System
 
 A comprehensive Point of Sale (POS) and Inventory Management System built for Rapaeng Cafe, designed to streamline operations, manage inventory, and process transactions efficiently.
