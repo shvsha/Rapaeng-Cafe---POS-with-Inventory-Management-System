@@ -1,3 +1,12 @@
+GROUP 6 - WEB SYSTEM
+Leader: Ivan Raphaelle Nigos
+
+Members:
+Enoch Karsten Aguinaldo
+Gabriel Dy
+Claude Benedict Navarro
+Czyrus Raposas
+
 # Rapaeng Cafe - POS with Inventory Management System
 
 A comprehensive Point of Sale (POS) and Inventory Management System built for Rapaeng Cafe, designed to streamline operations, manage inventory, and process transactions efficiently.
@@ -77,8 +86,17 @@ Rapaeng-Cafe-POS/
 ### Default Login Credentials
 
 ```
+Admin:
 Username: ainahatdog
 Password: 1234567
+
+Cashier:
+Username: saleiri
+Password: monje123
+
+Customer:
+Username: shasha
+Password: ivannigos
 ```
 *⚠️ Change these credentials immediately after first login for security purposes*
 
@@ -107,12 +125,11 @@ Password: 1234567
 ## 📊 Database Schema
 
 The system uses a relational database with the following main tables:
-- `users` - User accounts and authentication
-- `products` - Product catalog and inventory
-- `categories` - Product categories
-- `transactions` - Sales transactions
-- `transaction_items` - Transaction line items
-- `inventory_logs` - Inventory movement history
+- `customers` - User accounts and authentication
+- `menu`- Product catalog and inventory
+- `category` - Product categories
+- `orders` - Sales transactions
+- `stocks` - Inventory movement history
 
 ## 🤝 Contributing
 
