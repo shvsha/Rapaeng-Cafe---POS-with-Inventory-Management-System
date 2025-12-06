@@ -55,7 +55,7 @@ Rapaeng-Cafe-POS/
    ```sql
    CREATE DATABASE pos-inve_db;
    USE pos-inve_db;
-   SOURCE sql/database.sql;
+   SOURCE sql/pos-inve_db.sql;
    ```
 
 3. **Configure database connection**
